@@ -1,0 +1,2 @@
+cd C:\Users\HOME\Eclipseworkspacefor java\TC_VideoGameAPI
+mvn clean install
