@@ -34,10 +34,10 @@ public class TC_VideoGameAPI {
 		Response res=
 		given()
 		  .contentType("application/json")
-		  .body(data)
-		  .when()
+		.body(data)
+		.when()
 		  .post("http://localhost:8080/app/videogames")
-		  .then()
+	  .then()
 		   .statusCode(200)
 		   .log().body()
 		   .extract().response();
@@ -51,10 +51,10 @@ public class TC_VideoGameAPI {
 	{
 		given()
 		.when()
-		.get("http://localhost:8080/app/videogames/100")
+		    .get("http://localhost:8080/app/videogames/100")
 		.then()
-		 .statusCode(200)
-		 .log().body()
+		   .statusCode(200)
+		   .log().body()
 		.body("videoGame.id", equalTo("100"))
 		.body("videoGame.name", equalTo("Bhargavi"));		
 	}
@@ -69,25 +69,25 @@ public class TC_VideoGameAPI {
 		data.put("category","Adventure");
 		data.put("rating","Universal");
 		given()
-		.contentType("application/json")
-		.body(data)
-		.when()
-		 .put("http://localhost:8080/app/videogames/100")
-		 .then()
+		  .contentType("application/json")
+	   .body(data)
+	   .when()
+		   .put("http://localhost:8080/app/videogames/100")
+	   .then()
 		 .statusCode(200)
 		 .log().body()
-		 .body("videoGame.id", equalTo("100"))
-			.body("videoGame.name", equalTo("Madire Bhargavi")); 
+	   .body("videoGame.id", equalTo("100"))
+       .body("videoGame.name", equalTo("Madire Bhargavi")); 
 		
 	}
 	@Test(priority = 5)
 	public void test_DeleteVideoGame() throws InterruptedException
 	{
 		Response resl=
-				given()
-				.when()
+		given()
+		.when()
 				  .delete("http://localhost:8080/app/videogames/100")
-				.then()
+		.then()
 				   .statusCode(200)
 				   .log().body()
 				   .extract().response();
